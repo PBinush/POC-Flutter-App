@@ -1,263 +1,380 @@
 import 'package:flutter/material.dart';
-import 'landing/landing.dart';
 
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginPageState createState() => _LoginPageState();
+void main() {
+  runApp(MaterialApp(
+    home: LoginScreen(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
-class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  bool _obscurePassword = true;
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
-  void _login() {
-    final email = _emailController.text.trim();
-    final password = _passwordController.text;
-    if (email.isEmpty || password.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please enter both email and password')),
-      );
-      return;
-    }
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => LandingPage()),
-    );
-  }
-
+class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              // Top green curved container with tea logo
-              Stack(
-                children: [
-                  ClipPath(
-                    clipper: _BottomCurveClipper(),
-                    child: Container(
-                      height: size.height * 0.4,
-                      width: double.infinity,
-                      color: Colors.green[700],
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // Tea logo/image placeholder
-                          Padding(
-                            padding: const EdgeInsets.only(top: 32.0),
-                            child: Image.asset(
-                              'assets/tea_logo.png',
-                              height: 80,
-                              fit: BoxFit.contain,
-                              errorBuilder: (context, error, stackTrace) => Icon(Icons.local_drink, color: Colors.white, size: 80),
-                            ),
-                          ),
-                          SizedBox(height: 16),
-                          Text(
-                            'TEA POT',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 32,
-                              letterSpacing: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child: Text(
-                  'Connect with tea collectors across Sri Lanka. Manage your tea supply, track payments, and grow your business.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.grey[700],
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              SizedBox(height: 32),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child: Column(
+      body: Container(
+        width: 412,
+        height: 917,
+        child: Stack(
+          children: [
+            Positioned(
+              left: 0,
+              top: 0,
+              child: Container(
+                width: 412,
+                height: 917,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(color: Colors.white),
+                child: Stack(
                   children: [
-                    // Email TextField
-                    TextField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.email, color: Colors.green[700]),
-                        hintText: 'Email',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        contentPadding: EdgeInsets.symmetric(vertical: 16),
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    // Password TextField
-                    TextField(
-                      controller: _passwordController,
-                      obscureText: _obscurePassword,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock, color: Colors.green[700]),
-                        hintText: 'Password',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        contentPadding: EdgeInsets.symmetric(vertical: 16),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _obscurePassword ? Icons.visibility_off : Icons.visibility,
-                            color: Colors.grey,
+                    Positioned(
+                      left: -157,
+                      top: 0,
+                      child: Container(
+                        width: 612,
+                        height: 389,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage("https://placehold.co/612x389"),
+                            fit: BoxFit.cover,
                           ),
-                          onPressed: () {
-                            setState(() {
-                              _obscurePassword = !_obscurePassword;
-                            });
-                          },
                         ),
                       ),
                     ),
-                    SizedBox(height: 8),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Forgot Password?',
-                          style: TextStyle(color: Colors.green[700]),
+                    Positioned(
+                      left: 23,
+                      top: 22,
+                      child: Container(
+                        width: 357,
+                        height: 18,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage("https://placehold.co/357x18"),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 8),
-                    // Login Button
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: _login,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green[700],
+                    Positioned(
+                      left: 117,
+                      top: 83,
+                      child: Container(
+                        width: 165,
+                        height: 165,
+                        decoration: ShapeDecoration(
+                          color: Colors.white,
+                          shape: OvalBorder(),
+                          shadows: [
+                            BoxShadow(
+                              color: Color(0x3F000000),
+                              blurRadius: 6.30,
+                              offset: Offset(0, 4),
+                              spreadRadius: 0,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 104,
+                      top: 76,
+                      child: Container(
+                        width: 191,
+                        height: 178,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage("https://placehold.co/191x178"),
+                            fit: BoxFit.cover,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xFFFFFFFF),
+                              blurRadius: 17.80,
+                              offset: Offset(0, 4),
+                              spreadRadius: 0,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: -3,
+                      top: 349,
+                      child: Container(
+                        width: 415,
+                        height: 568,
+                        decoration: ShapeDecoration(
+                          color: const Color(0xFFFAFAF9),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(30),
+                              topRight: Radius.circular(30),
+                            ),
                           ),
-                          padding: EdgeInsets.symmetric(vertical: 16),
+                          shadows: [
+                            BoxShadow(
+                              color: Color(0x3F000000),
+                              blurRadius: 20,
+                              offset: Offset(0, 4),
+                              spreadRadius: 5,
+                            )
+                          ],
                         ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 37,
+                      top: 472,
+                      child: Container(
+                        width: 330,
+                        height: 55,
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              width: 1,
+                              color: const Color(0xFF374151),
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 37,
+                      top: 554,
+                      child: Container(
+                        width: 330,
+                        height: 55,
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              width: 1,
+                              color: const Color(0xFF374151),
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 51,
+                      top: 561,
+                      child: SizedBox(
+                        width: 86,
+                        child: Text(
+                          'Password',
+                          style: TextStyle(
+                            color: const Color(0xFF6B7280),
+                            fontSize: 18,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 50,
+                      top: 482,
+                      child: SizedBox(
+                        width: 118,
+                        child: Text(
+                          'User name',
+                          style: TextStyle(
+                            color: const Color(0xFF6B7280),
+                            fontSize: 18,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 37,
+                      top: 680,
+                      child: Container(
+                        width: 330,
+                        height: 55,
+                        decoration: ShapeDecoration(
+                          color: const Color(0xFF355E3B),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          shadows: [
+                            BoxShadow(
+                              color: Color(0x4C000000),
+                              blurRadius: 2,
+                              offset: Offset(0, 1),
+                              spreadRadius: 0,
+                            ),
+                            BoxShadow(
+                              color: Color(0x26000000),
+                              blurRadius: 3,
+                              offset: Offset(0, 1),
+                              spreadRadius: 1,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 152,
+                      top: 696.50,
+                      child: SizedBox(
+                        width: 92,
+                        height: 23.83,
                         child: Text(
                           'LOGIN',
                           style: TextStyle(
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                            fontSize: 28,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 16),
-                    // Divider with OR
-                    Row(
-                      children: [
-                        Expanded(child: Divider(thickness: 1)),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Text('OR', style: TextStyle(color: Colors.grey)),
-                        ),
-                        Expanded(child: Divider(thickness: 1)),
-                      ],
-                    ),
-                    SizedBox(height: 16),
-                    // Google Sign-In Button
-                    SizedBox(
-                      width: double.infinity,
-                      child: OutlinedButton.icon(
-                        onPressed: () {},
-                        icon: Image.asset(
-                          'assets/google_logo.png',
-                          height: 24,
-                          errorBuilder: (context, error, stackTrace) => Icon(Icons.login, color: Colors.red),
-                        ),
-                        label: Text(
-                          'Continue With Google',
+                    Positioned(
+                      left: 66,
+                      top: 848,
+                      child: SizedBox(
+                        width: 183,
+                        child: Text(
+                          'Don’t have Account?',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: const Color(0xFF6B7280),
+                            fontSize: 18,
+                            fontFamily: 'Inter',
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        style: OutlinedButton.styleFrom(
-                          side: BorderSide(color: Colors.grey),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    Positioned(
+                      left: 253,
+                      top: 848,
+                      child: SizedBox(
+                        width: 66,
+                        child: Text(
+                          'Sign up ',
+                          style: TextStyle(
+                            color: const Color(0xFF3498DB),
+                            fontSize: 18,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.underline,
                           ),
-                          padding: EdgeInsets.symmetric(vertical: 16),
                         ),
                       ),
                     ),
-                    SizedBox(height: 24),
-                    // Sign up link
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Don't have an account? ", style: TextStyle(color: Colors.grey[700])),
-                        GestureDetector(
-                          onTap: () {},
-                          child: Text(
-                            'Sign up',
-                            style: TextStyle(
-                              color: Colors.green[700],
-                              fontWeight: FontWeight.bold,
+                    Positioned(
+                      left: 37,
+                      top: 764,
+                      child: Container(
+                        width: 330,
+                        height: 55,
+                        decoration: ShapeDecoration(
+                          color: const Color(0xFFFAFCF9),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          shadows: [
+                            BoxShadow(
+                              color: Color(0x4C000000),
+                              blurRadius: 2,
+                              offset: Offset(0, 1),
+                              spreadRadius: 0,
                             ),
+                            BoxShadow(
+                              color: Color(0x26000000),
+                              blurRadius: 3,
+                              offset: Offset(0, 1),
+                              spreadRadius: 1,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 118.75,
+                      top: 781.21,
+                      child: SizedBox(
+                        width: 214,
+                        height: 20,
+                        child: Text(
+                          'Continue With Google',
+                          style: TextStyle(
+                            color: const Color(0xFF111827),
+                            fontSize: 20,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                    SizedBox(height: 32),
-                    // Footer version text
-                    Text(
-                      'V 1.0.0',
-                      style: TextStyle(color: Colors.grey, fontSize: 12),
+                    Positioned(
+                      left: 77,
+                      top: 776,
+                      child: Container(
+                        width: 32.41,
+                        height: 32.41,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        child: Stack(),
+                      ),
                     ),
-                    SizedBox(height: 16),
+                    Positioned(
+                      left: 200,
+                      top: 629,
+                      child: SizedBox(
+                        width: 161,
+                        child: Text(
+                          'Forgot Password ?',
+                          style: TextStyle(
+                            color: const Color(0xFF3498DB),
+                            fontSize: 18,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 143,
+                      top: 384,
+                      child: Text(
+                        'Login',
+                        style: TextStyle(
+                          color: const Color(0xFF111827),
+                          fontSize: 40,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 316,
+                      top: 564,
+                      child: Container(
+                        width: 36,
+                        height: 36,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage("https://placehold.co/36x36"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
-}
-
-// Custom clipper for curved bottom edge
-class _BottomCurveClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    path.lineTo(0, size.height - 60);
-    path.quadraticBezierTo(
-      size.width / 2, size.height,
-      size.width, size.height - 60,
-    );
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
