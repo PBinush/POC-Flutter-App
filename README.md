@@ -1,16 +1,15 @@
-# demo_app_v1
+# Flutter POC: Figma to Flutter using "Figma to Code" Plugin
 
-A new Flutter project.
+This is a **Proof of Concept (POC)** Flutter project to test the **Figma to Code plugin** for converting Figma designs into Flutter code.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## Project Overview
 
-A few resources to get you started if this is your first Flutter project:
+The purpose of this project is to:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Explore the capabilities of the **Figma to Code plugin**.
+- Evaluate how accurately Figma designs are translated into Flutter widgets.
+- Test the workflow: **Figma design → Plugin → Flutter app**.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+> ⚠️ Note: This is a POC for experimentation and learning, **not production-ready code**.
